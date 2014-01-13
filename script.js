@@ -4,6 +4,8 @@ window.onload = function() {
 }
 
 var ext_table;
+var list = [];
+var out;
 
 function fetch() {
 	var parser = new DOMParser();
@@ -11,6 +13,15 @@ function fetch() {
 	var body = doc.getElementsByTagName("body")[0];
 	var table = body.firstElementChild.firstElementChild.firstElementChild.children[2].firstElementChild.firstElementChild.firstElementChild;
 	ext_table = table;
+	for (var i=0; i<Math.floor(table.childElementCount/3); i++) {
+		var row = table.children[i*3];
+		var item = row.children[2].firstElementChild;
+		var story = {
+			title: item.innerHTML,
+			href: item.getAttribute("href")
+		}
+		stories.push(story);
+	}
 }
 
 function conjure() {
@@ -27,19 +38,7 @@ function conjure() {
 	}
 }
 
-
 var stories = [];
-
-var story = {
-	title:"blah blah story title",
-	href:"#"
-};
-
-stories.push(story);
-stories.push(story);
-
-
-
 
 var inputhtml="";
 inputhtml += "";
