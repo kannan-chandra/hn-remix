@@ -1,5 +1,5 @@
 window.onload = function() {
-	fetch();
+	parseHN(inputhtml);
 	conjure();
 }
 
@@ -7,9 +7,9 @@ var ext_table;
 var list = [];
 var out;
 
-function fetch() {
+function parseHN(input) {
 	var parser = new DOMParser();
-	var doc = parser.parseFromString(inputhtml, "text/html");
+	var doc = parser.parseFromString(input, "text/html");
 	var body = doc.getElementsByTagName("body")[0];
 	var table = body.firstElementChild.firstElementChild.firstElementChild.children[2].firstElementChild.firstElementChild.firstElementChild;
 	ext_table = table;
